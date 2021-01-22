@@ -1,11 +1,74 @@
+import {
+    FETCH_START,
+    FETCH_SUCCESS, 
+    FETCH_FAILED,
+    POST_START,
+    POST_SUCCESS,
+    POST_FAILED
+} from '../actions'
 
 export const initialState = {
+    smurfs: [],
+    isLoading: false,
+    error: ''
 }
 
-const reducer = ()=>{
-}
+ export const reducer = (state = initialState, action)=> {
+     switch(action.type) {
 
-export default reducer;
+        case FETCH_START: 
+            return {
+                ...state,
+                smurfs: [],
+                isLoading: true,
+                error: ''
+            }
+
+        case FETCH_SUCCESS:
+            return {
+                ...state,
+                smurfs: action.payload,
+                isLoading: false,
+                error: ''
+            }
+        
+        case FETCH_FAILED:
+            return {
+                ...state,
+                smurfs: [],
+                isLoading: false,
+                error: action.payload
+            }
+
+        case POST_START: 
+            return {
+                ...state,
+                smurfs: [...state.smurfs],
+                isLoading: true,
+                error: ''
+            }
+        
+        case POST_SUCCESS:
+            return {
+                ...state,
+                smurfs: action.payload,
+                isLoading: false,
+                error: ''
+            }
+
+        case POST_FAILED:
+            return {
+                ...state,
+                smurfs: [],
+                isLoading: false,
+                error: action.payload
+            }
+
+        default:
+            return state;
+     }
+}   
+
 
 //Task List:
 //1. Add in the initialState needed to hold: 
