@@ -32,6 +32,10 @@ export const postSmurfs = (smurf) => dispatch => {
     })
 }
 
+export const errorValue = () => dispatch => {
+    dispatch({type: POST_FAILED})
+}
+
 //Task List:
 //1. Add fetch smurfs action: 
 //              - fetch and return initial list of smurfs
